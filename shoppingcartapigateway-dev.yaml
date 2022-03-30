@@ -1,0 +1,34 @@
+spring:
+  cloud:   
+   gateway:
+      routes:
+      - id: shoppingcartaudit
+        uri: lb://shoppingcartaudit
+        predicates:
+        - Path=/audit/**
+      - id: shoppingcartorder
+        uri: lb://shoppingcartorder
+        predicates:
+        - Path=/order/**
+      - id: shoppingcartorderlogin
+        uri: lb://shoppingcartorder
+        predicates:
+        - Path=/public/** 
+      - id: shoppingcartproductinventory
+        uri: lb://shoppingcartproductinventory
+        predicates:
+        - Path=/inventory/** 
+      - id: shoppingcartuser
+        uri: lb://shoppingcartuser
+        predicates:
+        - Path=/user/** 
+      - id: shoppingonweb
+        uri: lb://shoppingonweb
+        predicates:
+        - Path=/cart/** 
+      - id: shoppingonweb
+        uri: lb://shoppingcartapigateway
+        predicates:
+        - Path=/shoppingcartapigateway/** 
+      
+
